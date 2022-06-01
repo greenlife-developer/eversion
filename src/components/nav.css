@@ -1,0 +1,23 @@
+.navigation{
+    display: flex;
+    justify-content: space-around;
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.navigation img{
+    width: 60px;
+    height: 60px;
+    margin: 1.5rem;
+    border-radius: 50%;
+}
+
+.navigation li{
+    list-style: none;
+    text-transform: uppercase;
+    margin: 1.5rem;
+}
+
+.navigation ul{
+    display: flex;
+}

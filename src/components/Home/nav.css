@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "tropiline";
+  src: url(../../../public/Tropiline/Tropiline-Black.ttf);
+}
+
+body {
+  font-family: "tropiline" monospace !important;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.navigation img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin: 0.5rem;
+}
+
+.navigation li {
+  list-style: none;
+  text-transform: uppercase;
+  margin: 0.5rem;
+}
+
+.navigation ul {
+  display: flex;
+}

@@ -9,7 +9,6 @@ export default function Nav() {
       <nav className="navigation">
         <video src={bgVideo} autoPlay muted loop className="myVideo">
           <source type="video/mp4" />
-          Your browser does not support HTML5 video.
         </video>
         <div className="nav-content">
           <div className="nav">
@@ -29,9 +28,15 @@ export default function Nav() {
           <div className="banner-content">
             <div className="welcome-text">
               <h1>welcome to eversion</h1>
-            </div>
-            <div className="welcome-img">
-              <img src="" alt="welcome-img" />
+              <h4>No. 1 fashion e-commerce brand</h4>
+              <br />
+              <a href="/" className="btn btn-primary">
+                Book a fashion designer
+              </a>
+              &nbsp;
+              <a href="/" className="btn btn-primary">
+                Upload a picture
+              </a>
             </div>
           </div>
         </div>

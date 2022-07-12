@@ -1,22 +1,97 @@
-.container{
+.registration{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: #E1D7D7; */
+}
+
+.container-form{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    box-shadow: 2px 2px 2px pink;
+    background-color: white;
+    box-shadow: 4px 4px 4px pink;
+    border-radius: 5px;
+    display: flex;
+    width: 600px;
+    padding: 15px 15px 45px 15px;
+}
+
+.login .forms-info{
+    margin-top: 0;
+}
+
+.login .forms-info img{
+    margin-bottom: 2px;
+    width: 100px;
+}
+
+.forms-info img{
+    margin-bottom: 10px;
+    width: 100px;
+}
+
+.forms-info{
+    margin-top: 1.3rem;
+}
+
+.forms-info span{
+    display: block;
+    text-align: left;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    margin: 10px;
+    padding: .5rem;
+    width: 250px;
+    box-shadow: 2px 2px 2px #aaaa;
 }
 
 .form-name{
     display: flex;
     justify-content: center;
-    margin: 1.2rem 0;
+    margin: 3rem 0 0 0;
+}
+
+input[type=submit]{
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .form-name div{
-    margin: 0 .2rem;
+    margin: 0 1%;
+}
+
+.form-name input{
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    border-radius: 3px;
+    height: 35px;
 }
 
 label{
     display: block;
     text-align: left !important;
+    margin: .9rem 0 0 2%;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input:focus{
+    outline: none;
+}
+
+.signup-inputs input{
+    width: 98%;
+    border: none;
+    padding: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    border-radius: 3px;
+    height: 35px;
 }

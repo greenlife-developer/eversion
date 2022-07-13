@@ -16,7 +16,7 @@ app.set("view engine", "ejs")
 app.use(express.json());
 
 const expressSession = require("express-session");
-app.use(expressSession({ 
+app.use(expressSession({
     "key": "user_id",
     "secret": "User secret object ID",
     "resave": true,
@@ -49,24 +49,23 @@ function getUser(userId, callBack) {
 
 
 
-const db = require("./config/keys").mongoURI; 
+const db = require("./config/keys").mongoURI;
 // const db = "mongodb://localhost:27017";
 
 const PORT = process.env.PORT || 4000
- 
+
 http.listen(PORT, function () {
     console.log('Server has started...');
 
     mongoClient.connect(db, { useUnifiedTopology: true }, function (error, client) {
         if (error) {
             console.log(error);
-            return; 
+            return;
         }
         database = client.db("eversion");
 
         app.get("/api", (req, res) => {
 
-            console.log("Hello eversion home");
 
             database.collection("users").find().sort({
                 "createdAt": -1
@@ -74,17 +73,17 @@ http.listen(PORT, function () {
                 if (req.session.user_id) {
                     getUser(req.session.user_id, function (user) {
                         res.json({
-                            "isLogin": true, 
+                            "isLogin": true,
                             "query": req.query,
                             "user": user,
-                            "users": users 
+                            "users": users
                         })
                     })
-                } else {
+                } else { 
                     res.json({
                         "isLogin": false,
                         "query": req.query,
-                        "images": images
+                        "users": users
                     })
                 }
             })
@@ -152,6 +151,6 @@ http.listen(PORT, function () {
             res.redirect("/");
         })
 
-        
+
     })
 });

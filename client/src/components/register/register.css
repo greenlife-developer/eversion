@@ -75,7 +75,7 @@ input[type=submit]{
     height: 35px;
 }
 
-label{
+.registration label{
     display: block;
     text-align: left !important;
     margin: .9rem 0 0 2%;

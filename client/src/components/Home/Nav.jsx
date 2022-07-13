@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import bgVideo from "../../images/videos/bgvideo.mp4";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -14,11 +14,7 @@ export default function Nav() {
     AOS.refresh();
   }, []);
 
-  fetch("/api")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    });
+  const [isLogin, setIsLogin] = useState(null)
 
   return (
     <>

@@ -15,10 +15,10 @@ export default function Login() {
             alt=""
           />
           <span>An online platform where you can shop everything fashion.</span>
-          <span>
+          <span> 
             Users can search for anything they want to buy by just uploading the
             picture of the item and we will get it across to them.
-          </span> 
+          </span>
           <span>
             We connect people who wants to get their wears sewn to our trusted,
             reliable and trend fashion designers.

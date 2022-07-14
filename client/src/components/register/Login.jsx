@@ -6,9 +6,9 @@ import Navigation from "../Home/Navigation";
 
 export default function Login() {
   return (
-    <div className="registration">
+    <div id="login" className="registration login">
       <Navigation/>
-      <div className="container-form login">
+      <div className="container-form">
         <div className="forms-info">
           <img
             src={mock}

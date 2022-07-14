@@ -14,7 +14,6 @@ export default function Navigation() {
       if (data !== undefined) {
         setIsLogin(true);
         setUser(data);
-        console.log(data);
       }
     });
 
@@ -55,7 +54,8 @@ export default function Navigation() {
                       <label htmlFor="">{user.user.email}</label>
                     </li>
                     <li>
-                      <Link to="/dashboard">Dashboard</Link>
+                      <Link to="/dashboard">Dashboard</Link> &nbsp;&nbsp;
+                      <Link to="/logout">Logout</Link>
                     </li>
                   </div>
                 ) : (

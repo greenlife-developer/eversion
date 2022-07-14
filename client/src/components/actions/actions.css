@@ -1,0 +1,41 @@
+.upload > .container-form{
+    display: flex;
+    flex-direction: column;
+    top: 60%;
+    width: 450px;
+}
+
+.upload label{
+    display: block;
+    text-align: left !important;
+    margin: .9rem 0 0 2%;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.upload .form-name{
+    margin: 1rem 0 0 0;
+}
+
+.upload .form-name div{
+    margin: 0 1%;
+    min-width: 48%;
+}
+
+.upload .form-name input{
+    min-width: 100% !important;
+    border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+@media screen and (max-width: 430px)  {
+    .upload .container-form{
+        width: 320px;
+        top: 70%;
+        flex-direction: column;
+    }
+}

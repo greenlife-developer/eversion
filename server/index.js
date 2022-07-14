@@ -1,10 +1,20 @@
 const express = require('express');
 const app = express();
 
+const util = require('util')
+const multer = require('multer');
+
+
 const mongodb = require('mongodb');
 const ObjectId = mongodb.ObjectId;
 const mongoClient = mongodb.MongoClient;
 const fs = require("fs");
+
+const unlinkFile = util.promisify(fs.unlink)
+const upload = multer({ dest: './uploads' })
+const { uploadFile, getFileStream } = require('./s3bucket')
+
+
 
 const mainURL = "http://localhost:4000/";
 let database = null;
@@ -15,7 +25,7 @@ app.use("/public", express.static(__dirname + "/public"));
 app.set("view engine", "ejs")
 app.use(express.json());
 
-const expressSession = require("express-session");
+const expressSession = require("express-session"); 
 app.use(expressSession({
     "key": "user_id",
     "secret": "User secret object ID",
@@ -104,7 +114,7 @@ http.listen(PORT, function () {
                     bcrypt.hash(req.body.password, 10, (err, hash) => {
                         database.collection("users").insertOne({
                             "firstName": req.body.fName,
-                            "lasttName": req.body.lName,
+                            "lastName": req.body.lName,
                             "email": req.body.email,
                             "password": hash
                         }, (err, data) => {
@@ -132,7 +142,7 @@ http.listen(PORT, function () {
                 "email": email
             }, (err, user) => {
                 if (user === null) {
-                    res.redirect("/login?error=not_exists")
+                    res.redirect("/login?error=not_exists") 
                 } else {
                     bcrypt.compare(password, user.password, (err, isPasswordVerify) => {
                         if (isPasswordVerify) {
@@ -142,13 +152,44 @@ http.listen(PORT, function () {
                             res.redirect("/login?error=wrong_password")
                         }
                     })
-                }
+                } 
             })
         })
 
         app.get("/logout", (req, res) => {
             req.session.destroy();
             res.redirect("/");
+        })
+
+        app.post("/upload", upload.single("image"),  async (req, res) => {
+            console.log(req.file)
+            if(req.session.user_id){
+                const file = req.file
+                const result = await uploadFile(file)
+                await unlinkFile(file.path)
+                console.log("This is from the back", result.Location)
+
+                getUser(req.session.user_id, (user) => {
+                   delete user.password;
+                   const currentTime = new Date().getTime();
+                   console.log("This is our body",req.body)
+                   let phone = req.body.phone;
+                   console.log("This is caption",name)
+
+                   database.collection("users").insertOne({
+                       "phone": phone, 
+                       "filePath": `/images/${result.key}`,
+                       "user": user,
+                       "createdAt": currentTime,
+                       "likers": [],
+                       "comments": []
+                   }, (err, data) => {
+                        res.redirect("/?message=image_uploaded");
+                   })
+                })
+            } else {
+                res.redirect("/login");
+            }
         })
 
 

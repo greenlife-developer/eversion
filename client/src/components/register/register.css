@@ -16,7 +16,7 @@
     box-shadow: 4px 4px 4px pink;
     border-radius: 5px;
     display: flex;
-    width: 600px;
+    width: 600px; 
     padding: 15px 15px 45px 15px;
 }
 
@@ -94,4 +94,20 @@ input:focus{
     box-shadow: 3px 3px 3px 3px #ddd;
     border-radius: 3px;
     height: 35px;
+}
+
+@media screen and (max-width: 430px)  {
+    .container-form{
+        width: 320px;
+        top: 70%;
+        flex-direction: column;
+    }
+
+    .forms-info{
+        display: none;
+    }
+
+    #login .container-form{
+        top: 50%;
+    }
 }

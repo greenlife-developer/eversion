@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+
 const util = require('util')
 const multer = require('multer');
 
@@ -12,7 +13,12 @@ const fs = require("fs");
 
 const unlinkFile = util.promisify(fs.unlink)
 const upload = multer({ dest: './uploads' })
+
 const { uploadFile, getFileStream } = require('./s3bucket')
+
+
+app.use("/public", express.static(__dirname + "/public"));
+app.use(express.json());
 
 
 
@@ -116,6 +122,7 @@ http.listen(PORT, function () {
                             "firstName": req.body.fName,
                             "lastName": req.body.lName,
                             "email": req.body.email,
+                            "number": req.body.number,
                             "password": hash
                         }, (err, data) => {
                             console.log(err)
@@ -158,26 +165,28 @@ http.listen(PORT, function () {
 
         app.get("/logout", (req, res) => {
             req.session.destroy();
-            res.redirect("/");
+            res.redirect("/"); 
         })
 
-        app.post("/upload", upload.single("image"),  async (req, res) => {
-            console.log(req.file)
+        app.post("/upload", upload.single("images"),  async (req, res) => {
+            console.log("lne 172",req.file.path)
+            const result = await uploadFile(req.file)
+            console.log(result)
             if(req.session.user_id){
                 const file = req.file
-                const result = await uploadFile(file)
+                const result = await uploadFile(req.file)
                 await unlinkFile(file.path)
-                console.log("This is from the back", result.Location)
+                console.log("This is from the back", result)
 
                 getUser(req.session.user_id, (user) => {
                    delete user.password;
                    const currentTime = new Date().getTime();
                    console.log("This is our body",req.body)
-                   let phone = req.body.phone;
-                   console.log("This is caption",name)
+                   let number = req.body.number
+                   console.log("This is number",number) 
 
-                   database.collection("users").insertOne({
-                       "phone": phone, 
+                   database.collection("images").insertOne({
+                       "number": number,
                        "filePath": `/images/${result.key}`,
                        "user": user,
                        "createdAt": currentTime,

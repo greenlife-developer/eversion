@@ -4,7 +4,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    /* background-color: #E1D7D7; */
+    background-color: #E1D7D7;
 }
 
 .container-form{
@@ -12,8 +12,10 @@
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background-color: white;
+    background-color: red;
+    margin-bottom: 1rem;
     box-shadow: 4px 4px 4px pink;
+    z-index: 0;
     border-radius: 5px;
     display: flex;
     width: 600px; 

@@ -51,8 +51,8 @@ export default function Signup() {
                   <input type="password" name="password"/>
                 </div>
                 <div>
-                  <label htmlFor="location">Location</label>
-                  <input type="location" name="location" />
+                  <label htmlFor="number">Number</label>
+                  <input type="number" name="number" />
                 </div>
                 <div>
                   <input type="submit" value="Sign Up" name="location" />

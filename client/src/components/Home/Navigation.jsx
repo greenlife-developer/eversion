@@ -3,12 +3,14 @@ import logo from "../../images/logo.png";
 import avatar from "../../images/avatar.png";
 import { Link, NavLink } from "react-router-dom";
 import "./nav.css";
+import { useEffect } from "react";
 
 export default function Navigation() {
   const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState(null);
 
-  fetch("/api")
+  useEffect(() => {
+    fetch("/api")
     .then((res) => res.json())
     .then((data) => {
       if (data !== undefined) {
@@ -16,6 +18,7 @@ export default function Navigation() {
         setUser(data);
       }
     });
+  }, [])
 
   return (
     <div className="nav">
@@ -35,7 +38,7 @@ export default function Navigation() {
           <span></span>
           <span></span>
         </div>
-        <ul class="dropdown-menu dropdown-menu-lg-end">
+        <ul class="dropdown-menu dropdown-menu-lg-start">
           <div>
             <h5>Account</h5>
             <div className="users">

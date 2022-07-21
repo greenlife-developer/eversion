@@ -27,9 +27,9 @@ export default function Navigation() {
           <img className="logo-img" src={logo} alt="" />
         </Link>
       </div>
-      <div class="btn-group">
+      <div className="btn-group">
         <div
-          class="dropdown-toggle dropbtx"
+          className="dropdown-toggle dropbtx"
           data-bs-toggle="dropdown"
           data-bs-display="static"
           aria-expanded="false"
@@ -38,7 +38,7 @@ export default function Navigation() {
           <span></span>
           <span></span>
         </div>
-        <ul class="dropdown-menu dropdown-menu-lg-start">
+        <ul className="dropdown-menu dropdown-menu-lg-start">
           <div>
             <h5>Account</h5>
             <div className="users">

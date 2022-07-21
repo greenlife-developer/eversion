@@ -19,7 +19,7 @@ h6 {
 }
 
 body {
-  font-family: "tropiline", sans-serif;
+  font-family: "tropiline", sans-serif !important;
   padding: 0;
   margin: 0;
 }

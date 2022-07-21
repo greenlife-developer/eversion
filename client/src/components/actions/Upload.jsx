@@ -32,30 +32,29 @@ export default function Upload() {
             You're about to make the best choice!
           </h6>
         </div>
-        <form action="/upload" method="post" enctype="multipart/form-data">
+        <form action="/upload" method="post" encType="multipart/form-data">
           <div className="form">
             <div className="form-name">
               <div>
                 <label htmlFor="f-name">First Name</label>
-                <input value={isLogin && user.user ? user.user.firstName: ""} type="text" name="fName" />
+                <input defaultValue={isLogin && user.user ? user.user.firstName: ""} type="text" name="fName" />
               </div>
               <div>
                 <label htmlFor="l-name">Last Name</label>
-                <input value={isLogin && user.user ? user.user.lastName: ""} type="text" name="lName" />
+                <input defaultValue={isLogin && user.user ? user.user.lastName: ""} type="text" name="lName" />
               </div>
             </div>
             <div className="signup-inputs">
               <div>
                 <label htmlFor="Email">Email</label>
-                <input value={isLogin && user.user ? user.user.email: ""} type="email" name="email" />
+                <input defaultValue={isLogin && user.user ? user.user.email: ""} type="email" name="email" />
               </div>
               <div>
                 <label htmlFor="phone">WhatsApp number</label>
-                <input value={isLogin && user.user ? user.user.number: ""} type="number" name="number" />
+                <input defaultValue={isLogin && user.user ? user.user.number: ""} type="number" name="number" />
               </div>
               <div>
-                <label htmlFor="phone">Upload your photo(max. 2)</label>
-                {/* <input type="file" name="image" id="" /> */}
+                <label htmlFor="phone">Upload your photo</label>
                 <FileUpload />
               </div>
               <div>

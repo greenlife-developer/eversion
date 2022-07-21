@@ -4,7 +4,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Modal, Upload } from "antd";
 import { useEffect } from "react";
 
-const FileUpload = (props) => {
+const FileUpload = () => {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
@@ -18,46 +18,49 @@ const FileUpload = (props) => {
       reader.onload = () => {
         setPreviewImage(reader.result);
       };
-      reader.readAsDataURL(previewImage);
+      reader.readAsDataURL(image);
     } else {
-      setPreviewImage(null);
+      setPreviewImage("");
     }
   }, [image]);
+
+  const handlePreview = async (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    if (file && file.type.substring(0, 5) === "image") {
+      setImage(file);
+      setPreviewVisible(true);
+      setPreviewTitle(
+        file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
+      );
+    } else {
+      setPreviewVisible(false);
+      setPreviewTitle("");
+    }
+  };
 
   const handleCancel = () => setPreviewVisible(false);
 
   const uploadButton = (
-    <div
-      style={{
-        marginTop: 8,
-        border: "1px dashed blue",
-        cursor: "pointer",
-        width: "100px",
-        margin: "auto",
-        padding: "1.2rem",
-      }}
-    >
-      <PlusOutlined />
-      <div>Upload</div>
+    <div className="file-upload">
+      <div>
+        <img src={previewImage} alt="" />
+      </div>
+      <div className="upload-btn">
+        <PlusOutlined />
+        <div>Upload</div>
+      </div>
     </div>
   );
   return (
     <>
       <input
         ref={fileInputRef}
-        onChange={(e) => {
-          const file = e.target.files[0];
-          setImage(file.url || file.preview);
-          setPreviewVisible(true);
-          setPreviewTitle(
-            file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
-          );
-          console.log(file);
-        }}
+        onChange={handlePreview}
         type="file"
+        accept="image/*"
         name="images"
         style={{ display: "none" }}
-        // multiple={false}
       />
       <div
         onClick={(e) => {
@@ -65,8 +68,7 @@ const FileUpload = (props) => {
           fileInputRef.current.click();
         }}
       >
-        {" "}
-        {uploadButton}{" "}
+        {uploadButton}
       </div>
       <Modal
         visible={previewVisible}
@@ -74,7 +76,6 @@ const FileUpload = (props) => {
         footer={null}
         onCancel={handleCancel}
       >
-        <p>{previewImage}</p>
         <img
           alt="example"
           style={{

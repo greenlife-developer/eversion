@@ -1,11 +1,11 @@
-.upload > .container-form{
+.upload>.container-form {
     display: flex;
     flex-direction: column;
     top: 60%;
     width: 450px;
 }
 
-.upload label{
+.upload label {
     display: block;
     text-align: left !important;
     margin: .9rem 0 0 2%;
@@ -13,16 +13,39 @@
     font-weight: bold;
 }
 
-.upload .form-name{
+.upload .form-name {
     margin: 1rem 0 0 0;
 }
 
-.upload .form-name div{
+.file-upload {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.file-upload .upload-btn {
+    margin-top: 8;
+    border: 1px dashed blue;
+    cursor: pointer;
+    width: 100px;
+    padding: 1.2rem;
+}
+
+.file-upload div {
+    margin: 5px;
+}
+
+.file-upload img {
+    width: 100px;
+    height: auto;
+}
+
+.upload .form-name div {
     margin: 0 1%;
     min-width: 48%;
 }
 
-.upload .form-name input{
+.upload .form-name input {
     min-width: 100% !important;
     border: none;
 }
@@ -32,8 +55,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 
-@media screen and (max-width: 430px)  {
-    .upload .container-form{
+@media screen and (max-width: 430px) {
+    .upload .container-form {
         width: 320px;
         top: 70%;
         flex-direction: column;

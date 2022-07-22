@@ -1,11 +1,12 @@
 import React from "react";
 import Navigation from "../Home/Navigation";
+import Layout from "./Layout";
 
 export default function Dashboard(){
     return(
         <div>
             <Navigation />
-            <h1>Dashboard abracadabra</h1>
+            <Layout />
         </div>
     )
 }

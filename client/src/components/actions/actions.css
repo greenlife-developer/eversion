@@ -38,6 +38,7 @@
 .file-upload img {
     width: 100px;
     height: auto;
+    cursor: pointer;
 }
 
 .upload .form-name div {

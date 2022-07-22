@@ -38,7 +38,7 @@ export default function Navigation() {
           <span></span>
           <span></span>
         </div>
-        <ul className="dropdown-menu dropdown-menu-lg-start">
+        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
           <div>
             <h5>Account</h5>
             <div className="users">

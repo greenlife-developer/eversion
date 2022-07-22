@@ -29,7 +29,6 @@ const FileUpload = () => {
     console.log(file);
     if (file && file.type.substring(0, 5) === "image") {
       setImage(file);
-      setPreviewVisible(true);
       setPreviewTitle(
         file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
       );
@@ -44,9 +43,22 @@ const FileUpload = () => {
   const uploadButton = (
     <div className="file-upload">
       <div>
-        <img src={previewImage} alt="" />
+        <img
+          onClick={(e) => {
+            e.preventDefault();
+            setPreviewVisible(true);
+          }}
+          src={previewImage}
+          alt=""
+        />
       </div>
-      <div className="upload-btn">
+      <div
+        className="upload-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          fileInputRef.current.click();
+        }}
+      >
         <PlusOutlined />
         <div>Upload</div>
       </div>
@@ -62,14 +74,7 @@ const FileUpload = () => {
         name="images"
         style={{ display: "none" }}
       />
-      <div
-        onClick={(e) => {
-          e.preventDefault();
-          fileInputRef.current.click();
-        }}
-      >
-        {uploadButton}
-      </div>
+      <div>{uploadButton}</div>
       <Modal
         visible={previewVisible}
         title={previewTitle}

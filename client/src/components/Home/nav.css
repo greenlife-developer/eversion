@@ -107,8 +107,8 @@ body {
 
 .dropdown-menu{
   position: absolute;
-  background-color: blue;
-  left: 0;
+  background-color: white;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   right: 0;
   width: 300px;
   padding: 10px;
@@ -212,4 +212,17 @@ body {
 
 .welcome-text .main-action:active{
   box-shadow: none;
+}
+
+
+@media screen and (max-width: 430px){
+
+  .nav {
+    justify-content: space-between;
+    padding-right: 1rem;
+  }
+
+  .dropdown-menu{
+    width: 280px;
+  }
 }

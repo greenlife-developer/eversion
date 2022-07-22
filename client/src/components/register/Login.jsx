@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import mock from "../../images/logomock.png";
 import Navigation from "../Home/Navigation";
 
 
 export default function Login() {
+
+  const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/login")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data.query)
+      if (data !== undefined) {
+        setIsLogin(true);
+        setUser(data);
+      }
+    });
+  })
+
   return (
     <div id="login" className="registration login">
       <Navigation/>

@@ -5,7 +5,7 @@ import Login from "./components/register/Login";
 import Signup from "./components/register/Signup";
 import Upload from "./components/actions/Upload";
 import Book from "./components/actions/Book";
-import Dashboard from "./components/actions/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   return (

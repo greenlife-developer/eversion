@@ -72,7 +72,7 @@ function getUser(userId, callBack) {
     );
 }
 
-const db = require("./config/keys").mongoURI;
+const db = require("./config_files/keys").mongoURI;
 // const db = "mongodb://localhost:27017";
 
 const PORT = process.env.PORT || 4000;

@@ -153,8 +153,8 @@ http.listen(PORT, function () {
             });
 
             app.get("/login", (req, res) => {
-                console.log(req.body)
-                res.json({
+                console.log(req.query)
+                res.json({ 
                     query: req.query,
                 });
             });
@@ -234,7 +234,7 @@ http.listen(PORT, function () {
                             (err, data) => {
                                 res.redirect("/?message=image_uploaded");
                             }
-                        );
+                        ); 
 
                         sgMail.send(emailData).then(sent => {
                             return res.json({

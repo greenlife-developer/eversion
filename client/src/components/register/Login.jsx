@@ -13,7 +13,7 @@ export default function Login() {
     fetch("/login")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.query)
+      console.log(data)
       if (data !== undefined) {
         setIsLogin(true);
         setUser(data);

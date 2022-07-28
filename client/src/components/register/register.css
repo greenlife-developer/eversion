@@ -1,17 +1,20 @@
 .registration{
-    position: absolute;
-    left: 0;
+    position: relative;
+    /* left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: #E1D7D7;
+    background-color: #E1D7D7; */
+}
+
+.eversion-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
 }
 
 .container-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     background-color: white;
     box-shadow: 4px 4px 4px pink;
     z-index: 0;

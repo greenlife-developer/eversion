@@ -5,7 +5,7 @@
     width: 450px;
 }
 
-.upload label {
+.upload label, .book label {
     display: block;
     text-align: left !important;
     margin: .9rem 0 0 2%;
@@ -16,6 +16,8 @@
 .upload .form-name {
     margin: 1rem 0 0 0;
 }
+
+/* file upload component */
 
 .file-upload {
     display: flex;
@@ -41,6 +43,8 @@
     cursor: pointer;
 }
 
+/* file upload component */
+
 .upload .form-name div {
     margin: 0 1%;
     min-width: 48%;
@@ -54,6 +58,45 @@
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
+/* Book special css starts here */
+.book .container-form{
+    /* background-color: red; */
+    margin-top: 3rem;
+    width: 800px;
+}
+
+.book .forms-info img{
+    position: sticky;
+    margin-right: .5rem;
+    border-radius: 5px;
+    width: 380px;
+    height: 400px;
+}
+
+.book .forms {
+    width: 100% ;
+}
+
+.book .form-name select{
+    width: 100% ;
+    border: none;
+    padding: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    border-radius: 3px;
+    height: 35px;
+}
+
+.book{
+    position: relative;
+}
+
+.book .form-name div{
+    width: 100%;
+}
+
+
+/* Book special css ends here */
 
 
 @media screen and (max-width: 430px) {

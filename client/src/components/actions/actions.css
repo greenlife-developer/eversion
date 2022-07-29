@@ -69,6 +69,7 @@ input[type=number]::-webkit-inner-spin-button {
 .book .forms-info img{
     position: sticky;
     margin-right: .5rem;
+    object-fit: cover;
     border-radius: 5px;
     width: 380px;
     height: 400px;
@@ -76,6 +77,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 .book .forms {
     width: 100% ;
+}
+
+.book .signup-inputs .form-name{
+    /* background-color: red; */
+    margin: 0;
 }
 
 .book .form-name select{
@@ -95,6 +101,17 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
 }
 
+.book .check{
+    display: flex;
+}
+
+.book .check input{
+    width: 25px;
+    box-shadow: none;
+    margin-top: 7px;
+    background-color: transparent;
+}
+  
 
 /* Book special css ends here */
 

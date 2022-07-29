@@ -8,13 +8,13 @@ import Navigation from "./Navigation";
 
 export default function Nav() {
   useEffect(() => {
-    AOS.init({ 
+    AOS.init({
       duration: 1000,
     });
     AOS.refresh();
   }, []);
 
-  const [isLogin, setIsLogin] = useState(null)
+  const [isLogin, setIsLogin] = useState(null);
 
   return (
     <>
@@ -47,6 +47,20 @@ export default function Nav() {
           </div>
         </div>
       </nav>
+      <div className="container content-container">
+        <div className="who-we-are">
+          <h1>Who we are</h1>
+          <div className="body-content">
+            <div>
+              <h3>Hello Everion</h3>
+              <hr />
+              
+            </div>
+            <div>Adeola</div>
+            <div>Adeola</div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

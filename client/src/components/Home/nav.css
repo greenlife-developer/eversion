@@ -37,7 +37,8 @@ body {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  position: inherit;
+  position: sticky;
+  top: 0;
   background-color: blue;
   z-index: 999;
   /* height: 150vh */
@@ -224,6 +225,25 @@ body {
 .welcome-text .main-action:active{
   box-shadow: none;
 }
+
+/* ----------------------- content container --------------------------- */
+
+.content-container{
+  position: absolute;
+}
+
+.content-container .who-we-are{
+  margin: 12px;
+  background-color: blue;
+  /* width: 25px; */
+}
+
+.body-content{
+  display: flex;
+}
+
+
+/* ----------------------- content container --------------------------- */
 
 
 @media screen and (max-width: 430px){

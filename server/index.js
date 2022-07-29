@@ -2,7 +2,7 @@ require('dotenv').config({
     path: './config_files/.env'
 })
 const express = require("express");
-const app = express();
+const app = express(); 
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.MAIL_KEY);
 
@@ -10,7 +10,7 @@ const util = require("util");
 const multer = require("multer");
 
 const mongodb = require("mongodb");
-const ObjectId = mongodb.ObjectId; 
+const ObjectId = mongodb.ObjectId;
 const mongoClient = mongodb.MongoClient;
 const fs = require("fs");
 
@@ -254,6 +254,59 @@ http.listen(PORT, function () {
                     res.redirect("/login?error=not_exist")
                 }
             });
+
+            app.get("/book", (req, res) => {
+
+                if (req.session.user_id) {
+                    const email = req.body.email
+                    const fullName = firstName + " " + lastName;
+                    const emailData = {
+                        from: email,
+                        to: "yemijoshua81@gmail.com",
+                        subject: "New Customer request: Needs a cloth",
+                        html: `
+                                <h1>New Request by ${fullName}</h1>
+                                <h5>Please let me know if you can sow this</h5>
+                                <img src=${result.Location} alt="Uploaded_imgage"/>
+                            `
+                    }
+
+                    getUser(req.session.user_id, (user) => {
+                        delete user.password;
+                        const currentTime = new Date().getTime();
+
+                        database.collection("images").insertOne(
+                            {
+                                number: number,
+                                filePath: `/images/${result.key}`,
+                                user: user,
+                                createdAt: currentTime,
+                                likers: [],
+                                comments: [],
+                            },
+                            (err, data) => {
+                                res.redirect("/?message=image_uploaded");
+                            }
+                        ); 
+
+                        sgMail.send(emailData).then(sent => {
+                            return res.json({
+                                message: `Email has been sent to ${email}`
+                            })
+                        }).catch(err => {
+
+                            console.log(err, "Not allowed")
+                            // return res.status(400).json({
+                            //     error: "Can't send message to your client"
+                            // })
+                        })
+
+                    });
+                } else {
+                    console.log("user is not reqistered...")
+                }
+
+            })
         }
     );
 });

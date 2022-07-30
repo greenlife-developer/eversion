@@ -4,7 +4,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import "./nav.css";
+import logo from "../../images/logo.png";
 import Navigation from "./Navigation";
+import Swipper from "./Swipper";
 
 export default function Nav() {
   useEffect(() => {
@@ -49,16 +51,79 @@ export default function Nav() {
       </nav>
       <div className="container content-container">
         <div className="who-we-are">
-          <h1>Who we are</h1>
+          <h1 style={{ color: "white" }}>Our story</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima,
+            magnam!
+          </p>
           <div className="body-content">
-            <div>
-              <h3>Hello Everion</h3>
-              <hr />
-              
+            <div className="first-child">
+              <img
+                style={{ width: "50px", height: "50px", objectFit: "cover" }}
+                src={logo}
+                alt=""
+              />
+              <div className="">
+                <h6>Who we are</h6>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+                  dolores et tenetur laboriosam temporibus, cupiditate ipsum.
+                  Sint neque id sequi repellat quis, repudiandae minima
+                  praesentium deserunt dolore ea, mollitia debitis provident,
+                  alias ipsam cupiditate soluta fugit tempore sapiente. Odit
+                  harum corrupti ipsa possimus quam deserunt ad, illo ipsum
+                  officia, quaerat placeat expedita modi sapiente esse enim
+                  aliquid! Deleniti culpa fugiat provident doloribus. Aliquid,
+                  cum tempora. Sed velit tempora provident in?
+                </p>
+              </div>
             </div>
-            <div>Adeola</div>
-            <div>Adeola</div>
+            <div className="first-child second-child">
+              <i style={{ fontSize: "35px", fontWeight: "bold", marginRight: ".5rem"}} class="fa-solid fa-check-double"></i>
+              <div className="">
+                <h6>Why choose eversion?</h6>
+                <div className="why-us">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span>
+                    An online platform where you can shop everything fashion.
+                  </span>
+                </div>
+                <div className="why-us">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>
+                    Users can search for anything they want to buy by just
+                    uploading the picture of the item and we will get it across
+                    to them.
+                  </span>
+                </div>
+                <div className="why-us">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>
+                    We connect people who wants to get their wears sewn to our
+                    trusted, reliable and trend fashion designers.
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+      <div className="container swiper">
+        <div className="">
+          <h1>What our customer's say</h1>
+          <div className="swiper-content">
+            <Swipper />
+          </div>
+        </div>
+      </div>
+      <div className="container experiences">
+        <h1>What we have done in the past</h1>
+        <div className="what-we-have-done">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
     </>

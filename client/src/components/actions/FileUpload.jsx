@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "antd/dist/antd.css";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, EyeOutlined  } from "@ant-design/icons";
 import { Modal, Upload } from "antd";
 import { useEffect } from "react";
 
@@ -42,7 +42,7 @@ const FileUpload = () => {
 
   const uploadButton = (
     <div className="file-upload">
-      <div>
+      <div className="image-prev">
         <img
           onClick={(e) => {
             e.preventDefault();

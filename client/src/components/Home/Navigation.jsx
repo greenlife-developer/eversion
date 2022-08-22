@@ -58,7 +58,7 @@ export default function Navigation() {
                     </li>
                     <li>
                       <Link to="/dashboard">Dashboard</Link> &nbsp;&nbsp;
-                      <Link to="/logout">Logout</Link>
+                      <Link to="/api/logout">Logout</Link>
                     </li>
                   </div>
                 ) : (

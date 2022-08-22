@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import "./nav.css";
 import logo from "../../images/logo.png";
+import styles from "../../styles";
 import Navigation from "./Navigation";
 import Swipper from "./Swipper";
 
@@ -51,7 +52,7 @@ export default function Nav() {
       </nav>
       <div className="container content-container">
         <div className="who-we-are">
-          <h1 style={{ color: "white" }}>Our story</h1>
+          <h1>Our story</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima,
             magnam!
@@ -79,7 +80,14 @@ export default function Nav() {
               </div>
             </div>
             <div className="first-child second-child">
-              <i style={{ fontSize: "35px", fontWeight: "bold", marginRight: ".5rem"}} class="fa-solid fa-check-double"></i>
+              <i
+                style={{
+                  fontSize: "35px",
+                  fontWeight: "bold",
+                  marginRight: ".5rem",
+                }}
+                class="fa-solid fa-check-double"
+              ></i>
               <div className="">
                 <h6>Why choose eversion?</h6>
                 <div className="why-us">
@@ -116,14 +124,29 @@ export default function Nav() {
           </div>
         </div>
       </div>
-      <div className="container experiences">
-        <h1>What we have done in the past</h1>
-        <div className="what-we-have-done">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+
+      <div className="customer-reviews">
+        <div className="container experiences">
+          <h1>What we have done in the past</h1>
+          <h6>See what our customer's have to say...</h6>
+          <div className="works-container">
+            <div class="works">
+              {styles.map((style, id) => {
+                return (
+                  <div className="work" key={id}>
+                    <img src={style.img} alt={style.name} />
+                    <div className="works-text">
+                      <div className="action-flex">
+                        <i className="fa-solid fa-cart-shopping"></i>
+                        <i class="fa-solid fa-scissors"></i>
+                        <i class="fa-solid fa-phone"></i>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </>

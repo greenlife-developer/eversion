@@ -14,6 +14,21 @@ const styles = [
         available_styles: ["C", "C", "C"],
         img: "https://images.unsplash.com/photo-1507831342385-ad6240968054?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
     },
+    {
+        name: "Buba",
+        available_styles: ["D", "D", "D"],
+        img: "https://images.unsplash.com/photo-1558303522-d7a2bdfdbd82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"
+    },
+    {
+        name: "Kaftan",
+        available_styles: ["E", "E", "E"],
+        img: "https://images.unsplash.com/photo-1613909671501-f9678ffc1d33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80"
+    },
+    {
+        name: "Senator",
+        available_styles: ["G", "G", "G"],
+        img: "https://images.unsplash.com/photo-1507831342385-ad6240968054?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
+    },
 ]
 
 export default styles;

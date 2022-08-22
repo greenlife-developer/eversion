@@ -20,6 +20,7 @@ h6 {
 
 body {
   font-family: "tropiline", sans-serif !important;
+  background-color: #F5F4F9;
   padding: 0;
   margin: 0;
 }
@@ -39,7 +40,7 @@ body {
   text-align: center;
   position: sticky;
   top: 0;
-  background-color: #E71874;
+  background-color: #383838;
   z-index: 999;
   /* height: 150vh */
 }
@@ -235,7 +236,8 @@ body {
 .content-container .who-we-are{
   border-radius: 5px;
   padding: 1.3rem .5rem;
-  background-color: #F9E2C5;
+  background-color: white;
+  box-shadow: 2px 2px 2px #ddd;
   margin-bottom: 3rem;
 }
 
@@ -310,8 +312,68 @@ body {
 
 /* ------------------------- experience ----------------------------------- */
 
+.customer-reviews{
+  margin: 1.5rem 0;
+}
 
+.works-container{
+  display: flex;
+  justify-content: center;
+}
 
+.works{
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 940px;
+  grid-gap: 1rem 0;
+}
+
+.work{
+  width: 305px;
+  height: 350px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.work img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.work .works-text{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: blue;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+  padding: 1rem 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: none;
+}
+
+.action-flex{
+  display: flex;
+  justify-content: space-around;
+}
+
+.action-flex i{
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  background-color: #0D6efd;
+  padding: .8rem 1.5rem;
+  border-radius: 5px;
+}
+
+.work:hover .works-text{
+  display: block;
+  /* transform: scale(1.1); */
+}
 
 
 /* ------------------------- experience ----------------------------------- */
@@ -386,5 +448,9 @@ body {
 
   .swiper{
     width: 400px;
+  }
+
+  .works{
+    grid-template-columns: 1fr;
   }
 }

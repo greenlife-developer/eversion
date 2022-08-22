@@ -5,19 +5,53 @@ import "./actions.css";
 import Navigation from "../Home/Navigation";
 import styles from "../../styles";
 import FileUpload from "./FileUpload";
+import { City }  from 'country-state-city';
 
 export default function Book() {
   const [style, setStyle] = useState(null);
+  const [city, setCity] = useState(null);
 
   const handleChange = (e) => {
     setStyle(e.target.value);
   };
 
+  const handleState = (e) => {
+    setCity(e.target.value)
+  }
+
   const result = styles.filter((std) => {
     return std.name === style;
   });
 
-  // console.log("result we get back ", result);
+  const [states, setStates] = useState(null);
+
+  useEffect(() => {
+    fetch("/book")
+    .then((res) => res.json())
+    .then((data) => {
+      if (data !== undefined) {
+        setStates(data.states);
+      }
+    });
+  }, [])
+
+  let result2 = null
+
+  if(states && city){
+    result2 = states.filter((std) => {
+      return std.name === city;
+    });
+  }
+
+  let newCity = null
+
+   if(result2){
+     newCity = City.getCitiesOfState(result2[0].countryCode, result2[0].isoCode)
+   }
+
+      
+  // console.log("New City", newCity)
+  // console.log("result we get back ", result2);
 
   return (
     <div className="book">
@@ -35,17 +69,15 @@ export default function Book() {
               <h2>Book a fashion deigner</h2>
               <h6>We look forward to delivering what you need.</h6>
             </div>
-            <form action="/book" method="post">
+            <form action="/book" method="post" encType="multipart/form-data">
               <div className="form">
                 <div className="form-name">
                   <div>
-                    <label htmlFor="what-to-sow">
-                      What do you want to sow?{" "}
-                    </label>
+                    <label htmlFor="sew">I want to sow? </label>
                     <select
                       onChange={handleChange}
-                      className="sow"
-                      name="what-to-sow"
+                      className="sew"
+                      name="sew"
                     >
                       {styles.map((item, id) => {
                         return (
@@ -75,41 +107,75 @@ export default function Book() {
                   <div className="form-name">
                     <div>
                       <label htmlFor="measurement">Your measurements</label>
-                      <input type="text" name="measurement" placeholder="Come and get my measurement?" />
+                      <input
+                        type="text"
+                        name="measurement"
+                        placeholder="Come and get my measurement?"
+                      />
                     </div>
                     <div>
-                      <label htmlFor="fabric">Do you have a fabric?</label>
-                      <input type="text" name="fabric" />
+                      <label htmlFor="fabric">I have my fabric?</label>
+                      <select className="style" name="fabric">
+                        <option value="yes"> Yes</option>
+                        <option value="no"> No</option>
+                      </select>
                     </div>
                   </div>
                   <div>
                     <label htmlFor="number">Number</label>
-                    <input type="number" name="number" placeholder="WhatsApp"/>
+                    <input type="number" name="number" placeholder="WhatsApp" />
                   </div>
                   <div>
-                    <label htmlFor="phone">Upload your photo(Do you have a specific style?)</label>
+                    <label htmlFor="phone">
+                      Upload your photo(Do you have a specific style?)
+                    </label>
                     <FileUpload />
                   </div>
                   <div className="form-name">
                     <div>
-                      <label htmlFor="street">Street</label>
-                      <input type="text" name="street" placeholder="Street" />
+                      <label htmlFor="state">State</label>
+                      <select className="style" onChange={handleState} name="state">
+                      { states ? states.map((item, id) => {
+                        return (
+                          <option key={id} value={item.name}>
+                            {item.name}
+                          </option>
+                        );
+                      }) : null }
+                      </select>
                     </div>
                     <div>
-                      <label htmlFor="area">Area</label>
-                      <input type="text" name="area" />
+                      <label htmlFor="city">City</label>
+                      <select className="style" name="city">
+                      { newCity ? newCity.map((item, id) => {
+                        return (
+                          <option key={id} value={item.name}>
+                            {item.name}
+                          </option>
+                        );
+                      }) : null }
+                      </select>
                     </div>
                   </div>
-                  <div>
-                    <label htmlFor="state">State</label>
-                    <input type="state" name="state" />
+                  <div className="street">
+                    <label htmlFor="address">Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        placeholder="Address"
+                      />
                   </div>
                   <div className="check">
-                    <input type="checkbox" name="select" />
-                    <label htmlFor="select">I did not find my style, come with more styles</label>
+                    <input type="checkbox" name="nostyle" />
+                    <label htmlFor="select">
+                      I did not find my style, come with more styles
+                    </label>
                   </div>
                   <div>
-                    <input type="submit" value="Submit your request" name="location" />
+                    <input
+                      type="submit"
+                      value="Submit your request"
+                    />
                   </div>
                 </div>
               </div>

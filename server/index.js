@@ -6,6 +6,13 @@ const app = express();
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.MAIL_KEY);
 
+let Country = require('country-state-city').Country;
+let State = require('country-state-city').State;
+let City = require('country-state-city').City
+
+// console.log(Country.getCountryByCode("NG"))
+// console.log(State.getStatesOfCountry("NG")) 
+
 const util = require("util");
 const multer = require("multer");
 
@@ -153,8 +160,7 @@ http.listen(PORT, function () {
             });
 
             app.get("/login", (req, res) => {
-                console.log(req.query)
-                res.json({ 
+                res.json({
                     query: req.query,
                 });
             });
@@ -188,7 +194,7 @@ http.listen(PORT, function () {
                 );
             });
 
-            app.get("/logout", (req, res) => {
+            app.get("/api/logout", (req, res) => {
                 req.session.destroy();
                 res.redirect("/");
             });
@@ -196,7 +202,7 @@ http.listen(PORT, function () {
             app.post("/upload", upload.single("images"), async (req, res) => {
 
                 if (req.session.user_id) {
-                    const file = req.file;
+                    const file = req.file
                     const result = await uploadFile(req.file);
                     await unlinkFile(file.path);
 
@@ -206,8 +212,8 @@ http.listen(PORT, function () {
                     const email = req.body.email
                     const fullName = firstName + " " + lastName;
                     const emailData = {
-                        from: email,
-                        to: "yemijoshua81@gmail.com",
+                        from: "yemijoshua81@gmail.com",
+                        to: email,
                         subject: "New Customer request: Needs a cloth",
                         html: `
                                 <h1>New Request by ${fullName}</h1>
@@ -216,7 +222,17 @@ http.listen(PORT, function () {
                             `
                     }
 
+                    sgMail.send(emailData).then(sent => {
+                        return res.json({
+                            message: `Email has been sent to ${email}`
+                        })
+                    }).catch(err => {
 
+                        console.log(err, "Not allowed")
+                        // return res.status(400).json({
+                        //     error: "Can't send message to your client"
+                        // })
+                    })
 
                     getUser(req.session.user_id, (user) => {
                         delete user.password;
@@ -228,25 +244,11 @@ http.listen(PORT, function () {
                                 filePath: `/images/${result.key}`,
                                 user: user,
                                 createdAt: currentTime,
-                                likers: [],
-                                comments: [],
                             },
                             (err, data) => {
                                 res.redirect("/?message=image_uploaded");
                             }
                         ); 
-
-                        sgMail.send(emailData).then(sent => {
-                            return res.json({
-                                message: `Email has been sent to ${email}`
-                            })
-                        }).catch(err => {
-
-                            console.log(err, "Not allowed")
-                            // return res.status(400).json({
-                            //     error: "Can't send message to your client"
-                            // })
-                        })
 
                     });
                 } else {
@@ -256,52 +258,82 @@ http.listen(PORT, function () {
             });
 
             app.get("/book", (req, res) => {
+                const states = State.getStatesOfCountry("NG")
+                
+                res.json({
+                    states: states
+                })
+            })
+
+            app.post("/book", upload.single("images"),  async(req, res) => {
+                const firstName = req.body.firstName
+                const lastName = req.body.lastName
+                const email = req.body.email
+                const fullName = firstName + " " + lastName;
+                const states = State.getStatesOfCountry("NG")
+                const state = states.filter(sta => {
+                    return sta.name === req.body.state
+                })
+
+                const city = City.getCitiesOfState("NG", state[0].isoCode)
+
+                const newCity = city.filter(cit => {
+                    return cit.name === req.body.city
+                })
+                // console.log("New city",newCity)
 
                 if (req.session.user_id) {
-                    const email = req.body.email
-                    const fullName = firstName + " " + lastName;
+                    const file = req.file
+                    const result = await uploadFile(req.file);
+                    await unlinkFile(file.path);
+
                     const emailData = {
                         from: email,
                         to: "yemijoshua81@gmail.com",
-                        subject: "New Customer request: Needs a cloth",
+                        subject: "New Customer request: New booking",
                         html: `
                                 <h1>New Request by ${fullName}</h1>
                                 <h5>Please let me know if you can sow this</h5>
                                 <img src=${result.Location} alt="Uploaded_imgage"/>
                             `
                     }
+                    sgMail.send(emailData).then(sent => {
+                        return res.json({
+                            message: `Email has been sent to ${email}`
+                        })
+                    }).catch(err => {
+
+                        console.log(err, "Not allowed")
+                        // return res.status(400).json({
+                        //     error: "Can't send message to your client"
+                        // })
+                    })
 
                     getUser(req.session.user_id, (user) => {
                         delete user.password;
                         const currentTime = new Date().getTime();
-
-                        database.collection("images").insertOne(
+                        database.collection("bookings").insertOne(
                             {
-                                number: number,
+                                number: req.body.number,
                                 filePath: `/images/${result.key}`,
+                                email: req.body.email,
+                                sew: req.body.sew,
+                                styles: req.body.styles,
+                                measurement: req.body.measurement,
+                                state: state,
+                                city: newCity,
+                                fabric: req.body.fabric,
+                                address: req.body.address,
+                                nostyle: req.body.nostyle,
                                 user: user,
                                 createdAt: currentTime,
-                                likers: [],
-                                comments: [],
                             },
                             (err, data) => {
-                                res.redirect("/?message=image_uploaded");
+                                res.redirect("/?message=booked_designer");
                             }
                         ); 
-
-                        sgMail.send(emailData).then(sent => {
-                            return res.json({
-                                message: `Email has been sent to ${email}`
-                            })
-                        }).catch(err => {
-
-                            console.log(err, "Not allowed")
-                            // return res.status(400).json({
-                            //     error: "Can't send message to your client"
-                            // })
-                        })
-
                     });
+
                 } else {
                     console.log("user is not reqistered...")
                 }

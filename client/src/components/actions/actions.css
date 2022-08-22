@@ -52,6 +52,7 @@
 
 .upload .form-name input {
     min-width: 100% !important;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px #ddd;
     border: none;
 }
 
@@ -61,7 +62,6 @@ input[type=number]::-webkit-inner-spin-button {
 
 /* Book special css starts here */
 .book .container-form{
-    /* background-color: red; */
     margin-top: 3rem;
     width: 800px;
 }
@@ -84,11 +84,11 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.book .form-name select{
+.book .form-name select, .book .street select{
     width: 100% ;
     border: none;
     padding: 10px;
-    box-shadow: 3px 3px 3px 3px #ddd;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px #ddd;
     border-radius: 3px;
     height: 35px;
 }
@@ -117,6 +117,17 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 @media screen and (max-width: 430px) {
+    .eversion-container{
+        background-color: #ddd;
+        margin: 0;
+    }
+
+    .container-form{
+        /* background-color: blue; */
+        padding-top: 1rem;
+        margin: 0 !important;
+    }
+
     .upload .container-form {
         width: 320px;
         top: 70%;

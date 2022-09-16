@@ -238,7 +238,7 @@ http.listen(PORT, function () {
                         delete user.password;
                         const currentTime = new Date().getTime();
 
-                        database.collection("images").insertOne(
+                        database.collection("eversionUploads").insertOne(
                             {
                                 number: number,
                                 filePath: `/images/${result.key}`,
@@ -258,11 +258,40 @@ http.listen(PORT, function () {
             });
 
             app.get("/book", (req, res) => {
-                const states = State.getStatesOfCountry("NG")
-                
-                res.json({
-                    states: states
+                database
+                .collection("eversionUploads")
+                .find()
+                .sort({
+                    productName: 1
                 })
+                .toArray((err, uploads) => {
+                    database
+                        .collection("bookings")
+                        .find()
+                        .sort({
+                            createdAt: -1
+                        })
+                        .toArray((err, booked) => {
+                            if (req.session.user_id) {
+                                getUser(req.session.user_id, function (user) {
+                                    res.json({
+                                        "isLogin": true,
+                                        "query": req.query,
+                                        "uploads": uploads,
+                                        "user": user,
+                                        "booked": booked,
+                                    });
+                                });
+                            } else {
+                                res.json({
+                                    "isLogin": false,
+                                    "query": req.query,
+                                    "sales": sales,
+                                    "items": items,
+                                });
+                            }
+                        })
+                });
             })
 
             app.post("/book", upload.single("images"),  async(req, res) => {

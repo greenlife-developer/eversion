@@ -110,7 +110,7 @@ export default function Book() {
                       <input
                         type="text"
                         name="measurement"
-                        placeholder="Come and get my measurement?"
+                        placeholder="Separate with comma"
                       />
                     </div>
                     <div>

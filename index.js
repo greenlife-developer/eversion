@@ -286,8 +286,8 @@ http.listen(PORT, function () {
                                 res.json({
                                     "isLogin": false,
                                     "query": req.query,
-                                    "sales": sales,
-                                    "items": items,
+                                    "uploads": uploads,
+                                    "booked": booked,
                                 });
                             }
                         })
@@ -344,7 +344,7 @@ http.listen(PORT, function () {
                         database.collection("bookings").insertOne(
                             {
                                 number: req.body.number,
-                                filePath: `/images/${result.key}`,
+                                filePath: file ? `/images/${result.key}`: null,
                                 email: req.body.email,
                                 sew: req.body.sew,
                                 styles: req.body.styles,

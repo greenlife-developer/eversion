@@ -23,7 +23,7 @@ const Layout = () => {
     window.addEventListener("resize", handleResize);
   });
 
-  const uploads = <h4 style={{color: "white", backgroundColor: "blue", padding: "5px", borderRadius: "5px"}} >Uploads</h4>
+  const uploads = <h4 style={{color: "white", width: "100%", backgroundColor: "blue", padding: "5px", borderRadius: "5px"}} >Uploads</h4>
 
   return (
     <div className="container-fluid dashboard">

@@ -9,3 +9,38 @@
 .description .img{
     margin-right: 1rem;
 }
+
+.clickable{
+    cursor: pointer;
+}
+
+.uploaded{
+    display: flex;
+    box-shadow: 5px 5px 5px #ddd;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: left;
+}
+
+.uploaded-img img{
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 430px){
+    .uploaded{
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+
+    .uploaded-img img{
+        margin: 0;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+}

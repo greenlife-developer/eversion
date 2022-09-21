@@ -60,6 +60,11 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+input[type=submit]{
+    background-color: blue;
+    color: white;
+}
+
 /* Book special css starts here */
 .book .container-form{
     margin-top: 3rem;
@@ -75,16 +80,20 @@ input[type=number]::-webkit-inner-spin-button {
     height: 400px;
 }
 
-.book .forms {
+.uploads{
+    display: flex;
+    flex-direction: column;
+}
+
+.forms {
     width: 100% ;
 }
 
-.book .signup-inputs .form-name{
-    /* background-color: red; */
+.signup-inputs .form-name{
     margin: 0;
 }
-
-.book .form-name select, .book .street select{
+ 
+.form-name select, .street select{
     width: 100% ;
     border: none;
     padding: 10px;
@@ -119,6 +128,7 @@ input[type=number]::-webkit-inner-spin-button {
 @media screen and (max-width: 430px) {
     .eversion-container{
         background-color: #ddd;
+        padding: 0;
         margin: 0;
     }
 
@@ -129,7 +139,6 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .upload .container-form {
-        width: 320px;
         top: 70%;
         flex-direction: column;
     }

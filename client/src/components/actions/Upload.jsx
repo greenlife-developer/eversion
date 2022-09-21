@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../Home/Navigation";
-import { Link } from "react-router-dom";
 import FileUpload from "./FileUpload";
+import { City } from "country-state-city";
 import "./actions.css";
 
 export default function Upload() {
   const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState(null);
+  const [states, setStates] = useState(null);
+  const [city, setCity] = useState(null);
+
+  const handleState = (e) => {
+    setCity(e.target.value);
+  };
 
   useEffect(() => {
     fetch("/api")
@@ -15,9 +21,24 @@ export default function Upload() {
         if (data !== undefined) {
           setIsLogin(true);
           setUser(data);
+          setStates(data.states);
         }
       });
   });
+
+  let result = null;
+
+  if (states && city) {
+    result = states.filter((std) => {
+      return std.name === city;
+    });
+  }
+
+  let newCity = null;
+
+  if (result) {
+    newCity = City.getCitiesOfState(result[0].countryCode, result[0].isoCode);
+  }
 
   // isLogin && user.user
 
@@ -25,7 +46,7 @@ export default function Upload() {
     <div className="upload">
       <Navigation />
       <div className="eversion-container">
-        <div className="forms container-form">
+        <div className="forms uploads container-form">
           <div className="sign-up">
             <h2>Let's help you find a style</h2>
             <h6>You're about to make the best choice!</h6>
@@ -75,8 +96,46 @@ export default function Upload() {
                   <label htmlFor="phone">Upload your photo</label>
                   <FileUpload />
                 </div>
+                <div className="form-name">
+                  <div>
+                    <label htmlFor="state">State</label>
+                    <select
+                      className="style"
+                      onChange={handleState}
+                      name="state"
+                    >
+                      {states
+                        ? states.map((item, id) => {
+                            return (
+                              <option key={id} value={item.name}>
+                                {item.name}
+                              </option>
+                            );
+                          })
+                        : null}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="city">City</label>
+                    <select className="style" name="city">
+                      {newCity
+                        ? newCity.map((item, id) => {
+                            return (
+                              <option key={id} value={item.name}>
+                                {item.name}
+                              </option>
+                            );
+                          })
+                        : <option value="select-city">Select city</option>}
+                    </select>
+                  </div>
+                </div>
+                <div className="street">
+                  <label htmlFor="address">Address</label>
+                  <input type="text" name="address" placeholder="Address" />
+                </div>
                 <div>
-                  <input type="submit" value="Submit" name="location" />
+                  <input type="submit" value="Submit" />
                 </div>
               </div>
             </div>

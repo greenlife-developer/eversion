@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .container-form{
@@ -26,6 +26,8 @@
 
 .login .forms-info{
     margin-top: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .login .forms-info img{
@@ -79,6 +81,10 @@ input[type=submit]{
     height: 35px;
 }
 
+.reg div{
+    width: 100% ;
+}
+
 .registration label{
     display: block;
     text-align: left !important;
@@ -102,9 +108,13 @@ input:focus{
 
 @media screen and (max-width: 430px)  {
     .container-form{
-        width: 320px;
+        width: 100vw;
         top: 70%;
         flex-direction: column;
+    }
+
+    .eversion-container{
+        margin-top: 3rem;
     }
 
     .forms-info{
@@ -112,6 +122,7 @@ input:focus{
     }
 
     #login .container-form{
-        top: 50%;
+        margin-top: 5rem !important;
+        top: 70%;
     }
 }

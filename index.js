@@ -108,29 +108,50 @@ http.listen(PORT, function () {
                         if (req.session.user_id) {
                             getUser(req.session.user_id, function (user) {
                                 res.json({
-                                    isLogin: true,
-                                    query: req.query,
-                                    user: user,
-                                    users: users,
+                                    "isLogin": true,
+                                    "query": req.query,
+                                    "states": State.getStatesOfCountry("NG"),
+                                    "user": user,
+                                    "users": users,
                                 });
                             });
                         } else {
                             res.json({
-                                isLogin: false,
-                                query: req.query,
-                                users: users,
+                                "isLogin": false,
+                                "query": req.query,
+                                "states": State.getStatesOfCountry("NG"),
+                                "users": users,
                             });
                         }
                     });
             });
 
+            app.get("/images/:key", (req, res) => {
+                const key = req.params.key
+    
+                const readStream = getFileStream(key) 
+    
+                res.attachment(key);
+                readStream.pipe(res)
+            })
+
             app.get("/register", (req, res) => {
                 res.json({
-                    query: req.query,
+                    "states": State.getStatesOfCountry("NG")
                 });
             });
 
             app.post("/register", (req, res) => {
+                const states = State.getStatesOfCountry("NG")
+                const state = states.filter(sta => {
+                    return sta.name === req.body.state
+                })
+
+                const city = City.getCitiesOfState("NG", state[0].isoCode)
+
+                const newCity = city.filter(cit => {
+                    return cit.name === req.body.city
+                })
                 database.collection("users").findOne(
                     {
                         email: req.body.email,
@@ -143,6 +164,9 @@ http.listen(PORT, function () {
                                         firstName: req.body.fName,
                                         lastName: req.body.lName,
                                         email: req.body.email,
+                                        state: state,
+                                        city: newCity,
+                                        address: req.body.address,
                                         number: req.body.number,
                                         password: hash,
                                     },
@@ -157,12 +181,6 @@ http.listen(PORT, function () {
                         }
                     }
                 );
-            });
-
-            app.get("/login", (req, res) => {
-                res.json({
-                    query: req.query,
-                });
             });
 
             app.post("/login", (req, res) => {
@@ -200,6 +218,17 @@ http.listen(PORT, function () {
             });
 
             app.post("/upload", upload.single("images"), async (req, res) => {
+
+                const states = State.getStatesOfCountry("NG")
+                const state = states.filter(sta => {
+                    return sta.name === req.body.state
+                })
+
+                const city = City.getCitiesOfState("NG", state[0].isoCode)
+
+                const newCity = city.filter(cit => {
+                    return cit.name === req.body.city
+                })
 
                 if (req.session.user_id) {
                     const file = req.file
@@ -241,6 +270,9 @@ http.listen(PORT, function () {
                         database.collection("eversionUploads").insertOne(
                             {
                                 number: number,
+                                state: state,
+                                city: newCity,
+                                address: req.body.address,
                                 filePath: `/images/${result.key}`,
                                 user: user,
                                 createdAt: currentTime,
@@ -278,6 +310,7 @@ http.listen(PORT, function () {
                                         "isLogin": true,
                                         "query": req.query,
                                         "uploads": uploads,
+                                        "states": State.getStatesOfCountry("NG"),
                                         "user": user,
                                         "booked": booked,
                                     });
@@ -287,6 +320,7 @@ http.listen(PORT, function () {
                                     "isLogin": false,
                                     "query": req.query,
                                     "uploads": uploads,
+                                    "states": State.getStatesOfCountry("NG"),
                                     "booked": booked,
                                 });
                             }

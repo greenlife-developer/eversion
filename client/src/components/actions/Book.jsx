@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import mock from "../../images/file.jpeg";
 import "./actions.css";
 import Navigation from "../Home/Navigation";
 import styles from "../../styles";
@@ -60,7 +58,7 @@ export default function Book() {
         <div className="container-form">
           <div className="forms-info">
             <img
-              src={result && result.length === 1 ? result[0].img : mock}
+              src={result && result.length === 1 ? result[0].img : styles[0].img}
               alt="selected style"
             />
           </div>

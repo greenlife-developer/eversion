@@ -83,6 +83,7 @@ const BookedItems = () => {
             <img
               src={book.filePath}
               className="clickable"
+              style={{borderRadius: "5px"}}
               onClick={(e) => {
                 e.preventDefault();
                 setPreviewVisible(true);
@@ -101,7 +102,7 @@ const BookedItems = () => {
             <div className="img">
               <img
                 height="250px"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", borderRadius: "5px" }}
                 width="260px"
                 src={result && result.length === 1 ? result[0].img : null}
                 alt="selected style"

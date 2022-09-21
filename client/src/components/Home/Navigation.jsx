@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import logo from "../../images/logo.png";
-import avatar from "../../images/avatar.png";
 import { Link, NavLink } from "react-router-dom";
 import "./nav.css";
 import { useEffect } from "react";
@@ -11,14 +10,14 @@ export default function Navigation() {
 
   useEffect(() => {
     fetch("/api")
-    .then((res) => res.json())
-    .then((data) => {
-      if (data !== undefined) {
-        setIsLogin(true);
-        setUser(data);
-      }
-    });
-  }, [])
+      .then((res) => res.json())
+      .then((data) => {
+        if (data !== undefined) {
+          setIsLogin(true);
+          setUser(data);
+        }
+      });
+  }, []);
 
   return (
     <div className="nav">
@@ -29,40 +28,44 @@ export default function Navigation() {
       </div>
       <div className="btn-group">
         <div
-          className="dropdown-toggle dropbtx"
-          data-bs-toggle="dropdown"
-          data-bs-display="static"
-          aria-expanded="false"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+          className="dropbtx"
         >
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <ul className="dropdown-menu dropdown-menu-end">
-          <div>
-            <h5>Account</h5>
-            <div className="users">
-              <div className="user-info">
-                <img src={avatar} alt="" /> 
-              </div>
-              <div className="user-login">
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body user-information">
+            <div>
+              <h5>Account</h5>
+              <div className="users">
                 {isLogin && user.user ? (
-                  <div>
+                  <div className="loggedin">
+                    <p>{user.user.firstName + " " + user.user.lastName}</p>
+                    <p>{user.user.email}</p>
                     <li>
-                      <label htmlFor="">
-                        {user.user.firstName + " " + user.user.lastName}
-                      </label>
-                    </li>
-                    <li>
-                      <label htmlFor="">{user.user.email}</label>
-                    </li>
-                    <li>
-                      <Link to="/dashboard">Dashboard</Link> &nbsp;&nbsp;
-                      <Link to="/api/logout">Logout</Link>
+                      <Link className="loggedli" to="/dashboard">Dashboard</Link>
+                      <Link className="loggedli" to="/api/logout">Logout</Link>
                     </li>
                   </div>
                 ) : (
-                  <div>
+                  <div className="not-loggedin">
                     <li>
                       <NavLink className="nav-links" to="/login">
                         Login
@@ -77,22 +80,22 @@ export default function Navigation() {
                 )}
               </div>
             </div>
+            <hr noshade/>
+            <div className="services">
+              <h5>Services</h5>
+              <li>
+                <NavLink className="nav-links" to="/book">
+                  <i class="fa-regular fa-calendar-check"></i> Book a designer
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-links" to="/upload">
+                  <i class="fa-solid fa-upload"></i> Upload an image
+                </NavLink>
+              </li>
+            </div>
           </div>
-          <hr />
-          <div className="services">
-            <h5>Services</h5>
-            <li>
-              <NavLink className="nav-links" to="/book">
-                Book a designer
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-links" to="/upload">
-                Upload an image
-              </NavLink>
-            </li>
-          </div>
-        </ul>
+        </div>
       </div>
     </div>
   );

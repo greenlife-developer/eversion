@@ -1,13 +1,28 @@
-.upload>.container-form {
+.upload .container-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     top: 60%;
-    width: 450px;
+    width: 600px;
 }
+
+/* .uploads{
+    display: flex;
+    flex-direction: column;
+} */
+
+/* .upload .eversion-container{
+    background-color: red !important;
+    width: 50vw !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+} */
 
 .upload label, .book label {
     display: block;
-    text-align: left !important;
+    text-align: left;
     margin: .9rem 0 0 2%;
     font-size: 14px;
     font-weight: bold;
@@ -51,7 +66,7 @@
 }
 
 .upload .form-name input {
-    min-width: 100% !important;
+    min-width: 100%;
     box-shadow: 1.5px 1.5px 1.5px 1.5px #ddd;
     border: none;
 }
@@ -61,7 +76,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=submit]{
-    background-color: blue;
+    background-color: #383838;
+    font-size: .8rem;
+    box-shadow: none;
     color: white;
 }
 
@@ -78,11 +95,6 @@ input[type=submit]{
     border-radius: 5px;
     width: 380px;
     height: 400px;
-}
-
-.uploads{
-    display: flex;
-    flex-direction: column;
 }
 
 .forms {
@@ -135,7 +147,7 @@ input[type=submit]{
     .container-form{
         /* background-color: blue; */
         padding-top: 1rem;
-        margin: 0 !important;
+        margin: 0;
     }
 
     .upload .container-form {

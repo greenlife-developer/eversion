@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import bgVideo from "../../images/videos/bgvideo.mp4";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -7,6 +7,7 @@ import "./nav.css";
 import logo from "../../images/logo.png";
 import styles from "../../styles";
 import Navigation from "./Navigation";
+import Faq from "./Faq";
 import Swipper from "./Swipper";
 
 export default function Nav() {
@@ -16,8 +17,6 @@ export default function Nav() {
     });
     AOS.refresh();
   }, []);
-
-  const [isLogin, setIsLogin] = useState(null);
 
   return (
     <>
@@ -149,6 +148,37 @@ export default function Nav() {
           </div>
         </div>
       </div>
+
+      <div className="about-eversion">
+        <div className="about-container">
+          <h1>About us</h1>
+          <div>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+              iste dicta quis molestiae dolorem aperiam quisquam similique nisi
+              animi minus inventore adipisci eius provident tenetur, doloribus,
+              ullam autem. Dolores, qui! Alias inventore voluptas, possimus
+              rerum illum, aliquam eaque voluptatem amet adipisci nesciunt fugit
+              veritatis animi doloremque esse facere dolore reprehenderit?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="faq">
+        <div className="faq-container">
+          <h1>Frequesntly Asked Questions</h1>
+          <div className="">
+            <Faq />
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div className="footer">
+          <h1></h1>
+        </div>
+      </footer>
     </>
   );
 }

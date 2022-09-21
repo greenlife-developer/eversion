@@ -44,86 +44,82 @@ body {
 
 /* dropdown style for bootstrap */
 
-.btn-group{
-  height: 30px;
-  margin-top: 2rem;
+.dropbtx{
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-.btn-group span{
-  background-color: white;
-  width: 30px;
+.dropbtx span{
+  width: 40px;
   height: 2px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  background-color: white;
   display: block;
 }
 
-.users{
-  display: flex;
-  padding: 10px;
+.user-information{
+  color: white;
 }
 
-.users li{
-  margin: 0 10px;
-  background-color: transparent;
-  padding: 0;
-  display: flex;
+.user-information h5{
+  text-align: left;
+}
+
+.user-information .loggedin{
+  background-color: #383838;
+  padding: 10px 0;
   border-radius: 5px;
 }
 
-.user-info{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: blue;
+.user-information .loggedin p{
+  margin-bottom: 0;
 }
 
-.user-info img{
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+.user-information .loggedin li{
+  margin-top: 10px;
 }
 
-.users li .nav-links, .services li .nav-links{
-  display: inline-block;
-  width: 100%;
-  background-image: none;
-  text-transform: lowercase;
-  color: #ddd;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-
-.dropbtx{
-  position: relative;
-  height: 30px;
-  cursor: pointer;
-}
-
-.dropdown-toggle::after{
-  content: '';
-  display: none;
-}
-
-.dropdown-menu{
-  position: absolute;
+.user-information .loggedin li .loggedli{
   background-color: white;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-  right: 0;
-  width: 300px;
-  padding: 10px;
+  padding: 8px 25px;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: #383838;
 }
 
-.dropdown-menu li{
-  margin: 10px 5px;
-  background-color: rgb(143, 66, 66);
-  padding: 8px;
+.user-information .not-loggedin{
+  display: flex;
+}
+
+.user-information .not-loggedin li{
+  background-color: #383838;
+  color: white !important;
+  margin: 0 1rem;
+  padding: 10px 25px;
   border-radius: 5px;
-  /* width: 100%; */
+}
+
+.user-information .services li{
+  background-color: #383838;
+  color: white !important;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.user-information .nav-links{
+  color: white;
+}
+
+.user-information .services li i{
+  margin-right: 1rem;
+  font-size: 1rem;
 }
 
 
 /*  ------------ drop style from bootstrap */
+
 
 .nav-content {
   position: absolute;
@@ -192,14 +188,6 @@ body {
   margin-top: .5rem;
   background-image: linear-gradient(135deg, #EF310E 40%, #E71874);
   padding: .8rem;
-}
-
-.active{
-  background-image: none;
-  background-color: #F3C58B;
-  width: 100%;
-  height: 100%;
-  /* box-shadow: 3px 3px 3px #ddd; */
 }
 
 .welcome-text .main-action:focus{
@@ -369,6 +357,35 @@ body {
 
 /* ------------------------- experience ----------------------------------- */
 
+/*  ------------ About eversion */
+
+.about-eversion{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.about-eversion .about-container{
+  background-color: #383838;
+  border-radius: 8px;
+  width: 500px;
+  padding: 20px 30px;
+  color: white;
+}
+
+/*  ------------ About eversion */
+
+
+/*  ------------ Faq */
+.faq{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+
+/*  ------------ Faq */
+
 
 
 
@@ -398,10 +415,6 @@ body {
   .nav {
     justify-content: space-between;
     padding-right: 1rem;
-  }
-
-  .dropdown-menu{
-    width: 280px;
   }
 
   .banner-content {
@@ -443,5 +456,9 @@ body {
 
   .works{
     grid-template-columns: 1fr;
+  }
+
+  .about-eversion .about-container{
+    width: 100%;
   }
 }

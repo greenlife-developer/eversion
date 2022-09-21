@@ -46,7 +46,7 @@ export default function Upload() {
     <div className="upload">
       <Navigation />
       <div className="eversion-container">
-        <div className="forms uploads container-form">
+        <div className="forms container-form">
           <div className="sign-up">
             <h2>Let's help you find a style</h2>
             <h6>You're about to make the best choice!</h6>

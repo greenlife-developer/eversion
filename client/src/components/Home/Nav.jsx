@@ -7,6 +7,7 @@ import "./nav.css";
 import logo from "../../images/logo.png";
 import styles from "../../styles";
 import Navigation from "./Navigation";
+import about from "../../images/aboutimg.jpg"
 import Faq from "./Faq";
 import Swipper from "./Swipper";
 
@@ -152,7 +153,18 @@ export default function Nav() {
       <div className="about-eversion">
         <div className="about-container">
           <h1>About us</h1>
-          <div>
+          <div className="about-body">
+            <div className="about-img">
+              <img src={about} width="300px" height="300px" alt="" />
+            </div>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+              iste dicta quis molestiae dolorem aperiam quisquam similique nisi
+              animi minus inventore adipisci eius provident tenetur, doloribus,
+              ullam autem. Dolores, qui! Alias inventore voluptas, possimus
+              rerum illum, aliquam eaque voluptatem amet adipisci nesciunt fugit
+              veritatis animi doloremque esse facere dolore reprehenderit?
+            </p> <br /><br />
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam,
               iste dicta quis molestiae dolorem aperiam quisquam similique nisi
@@ -176,7 +188,13 @@ export default function Nav() {
 
       <footer>
         <div className="footer">
-          <h1></h1>
+          <div className="icons">
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          
         </div>
       </footer>
     </>

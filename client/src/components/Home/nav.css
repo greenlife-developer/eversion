@@ -52,7 +52,7 @@ body {
 .dropbtx span{
   width: 40px;
   height: 2px;
-  margin-top: 8px;
+  margin-top: 5px;
   background-color: white;
   display: block;
 }
@@ -215,9 +215,13 @@ body {
 .content-container .who-we-are{
   border-radius: 5px;
   padding: 1.3rem .5rem;
-  background-color: white;
-  box-shadow: 2px 2px 2px #ddd;
+  background-color: #383838;
+  color: white;
   margin-bottom: 3rem;
+}
+
+.content-container .who-we-are h1, .content-container .who-we-are h6{
+  color: white
 }
 
 
@@ -245,13 +249,13 @@ body {
   padding: 1rem 1rem;
   margin: .5rem 0;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px #ddd;
+  color: black;
 }
 
 .body-content .second-child .why-us i{
   font-size: 20px;
   margin-right: .5rem;
-  color: #F98084;
+  color: rgb(226, 48, 54);
   font-weight: bold;
 }
 
@@ -368,9 +372,28 @@ body {
 .about-eversion .about-container{
   background-color: #383838;
   border-radius: 8px;
-  width: 500px;
-  padding: 20px 30px;
+  width: 1200px;
+  padding: 20px 200px;
   color: white;
+}
+
+.about-container h1{
+  color: white;
+}
+
+.about-eversion .about-container p{
+  text-align: justify;
+}
+
+.about-body{
+  display: flex;
+  margin-right: 1rem;
+}
+
+.about-img img{
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
 }
 
 /*  ------------ About eversion */
@@ -383,8 +406,36 @@ body {
   margin-top: 5rem;
 }
 
+.faq-container{
+  width: 900px;
+}
+
+.faq-container p{
+  text-align: justify;
+}
+
 
 /*  ------------ Faq */
+
+
+/*  ------------ Footer ---------------- */
+footer .footer{
+  background-color: #000;
+  margin-top: 3rem;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer .icons i{
+  color: white;
+  background-color: #383838;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+/*  ------------ Footer ---------------- */
 
 
 
@@ -459,6 +510,17 @@ body {
   }
 
   .about-eversion .about-container{
-    width: 100%;
+    width: 100vw;
+    margin: 10px;
+    padding: 10px 10px;
+  }
+
+  .about-body{
+    flex-direction: column;
+  }
+
+  .faq-container{
+    width: 100vw;
+    margin: 10px;
   }
 }

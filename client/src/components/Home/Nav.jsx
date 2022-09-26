@@ -10,6 +10,7 @@ import Navigation from "./Navigation";
 import about from "../../images/aboutimg.jpg"
 import Faq from "./Faq";
 import Swipper from "./Swipper";
+import Footer from "./Footer";
 
 export default function Nav() {
   useEffect(() => {
@@ -185,18 +186,7 @@ export default function Nav() {
           </div>
         </div>
       </div>
-
-      <footer>
-        <div className="footer">
-          <div className="icons">
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-instagram"></i>
-          </div>
-          
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

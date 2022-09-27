@@ -25,7 +25,7 @@ export default function Book() {
   const [states, setStates] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/book").then((data) => {
+    axios.get("/api").then((data) => {
       console.log("axios get",data)
         if (data !== undefined) {
           setStates(data.data.states);

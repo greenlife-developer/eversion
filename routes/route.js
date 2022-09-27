@@ -43,8 +43,7 @@ function getUser(userId, callBack) {
     );
 }
 
-// const db = process.env.MONGO_URI;
-const db = "mongodb://localhost:27017";
+const db = process.env.MONGO_URI;
 
 mongoClient.connect(
     db,

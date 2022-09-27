@@ -18,7 +18,6 @@ export default function Signup() {
     axios.get("/api/register").then((data) => {
       console.log("axios get",data)
         if (data !== undefined) {
-          setIsLogin(true);
           setStates(data.data.states);
         }
     });

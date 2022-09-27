@@ -39,8 +39,8 @@ export default () => {
         disableOnInteraction: false,
       }}
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log("slide change")}
     >
       {reviews.map((review, id) => {
         return (

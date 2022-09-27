@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
+import axios from "axios";
 
 export default function UploadedItems() {
   const [uploaded, setUploaded] = useState(null);
@@ -9,14 +10,12 @@ export default function UploadedItems() {
   const handleCancel = () => setPreviewVisible(false);
 
   useEffect(() => {
-    fetch("/api/book")
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get("/api/book").then((data) => {
+      console.log("axios get",data)
         if (data !== undefined) {
-          console.log(data.uploads);
-          setUploaded(data.uploads);
+          setUploaded(data.data.uploads);
         }
-      });
+    });
   }, []);
 
   return (

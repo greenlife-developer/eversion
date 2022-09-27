@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import mock from "../../images/logomock.png";
 import Navigation from "../Home/Navigation";
+import axios from "axios";
 import { City } from "country-state-city";
 import "./register.css";
 
@@ -14,14 +15,14 @@ export default function Signup() {
   };
 
   useEffect(() => {
-    fetch("/api/register")
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get("/api/register").then((data) => {
+      console.log("axios get",data)
         if (data !== undefined) {
-          setStates(data.states);
+          setIsLogin(true);
+          setStates(data.data.states);
         }
-      });
-  });
+    });
+  }, []);
 
   let result = null;
 

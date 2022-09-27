@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../Home/Navigation";
 import FileUpload from "./FileUpload";
+import axios from "axios";
 import { City } from "country-state-city";
 import "./actions.css";
 
@@ -15,16 +16,15 @@ export default function Upload() {
   };
 
   useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get("/api").then((data) => {
+      console.log("axios get",data)
         if (data !== undefined) {
           setIsLogin(true);
-          setUser(data);
-          setStates(data.states);
+          setUser(data.data);
+          setStates(data.data.states);
         }
-      });
-  });
+    });
+  }, []);
 
   let result = null;
 
@@ -51,7 +51,7 @@ export default function Upload() {
             <h2>Let's help you find a style</h2>
             <h6>You're about to make the best choice!</h6>
           </div>
-          <form action="/upload" method="post" encType="multipart/form-data">
+          <form action="/api/upload" method="post" encType="multipart/form-data">
             <div className="form">
               <div className="form-name">
                 <div>

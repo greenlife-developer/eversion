@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "antd/dist/antd.min.css";
 import { Table, Modal } from "antd";
+import axios from "axios";
 import styles from "../../styles";
 
 const columns = [
@@ -55,14 +56,12 @@ const BookedItems = () => {
   const handleCancel = () => setPreviewVisible(false);
 
   useEffect(() => {
-    fetch("/api/book")
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get("/api/book").then((data) => {
+      console.log("axios get",data)
         if (data !== undefined) {
-          console.log(data.booked);
-          setBooked(data.booked);
+          setBooked(data.data.booked);
         }
-      });
+    });
   }, []);
 
   const data = [];

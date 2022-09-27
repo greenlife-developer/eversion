@@ -3,6 +3,7 @@ import "./actions.css";
 import Navigation from "../Home/Navigation";
 import styles from "../../styles";
 import FileUpload from "./FileUpload";
+import axios from "axios";
 import { City }  from 'country-state-city';
 
 export default function Book() {
@@ -24,14 +25,13 @@ export default function Book() {
   const [states, setStates] = useState(null);
 
   useEffect(() => {
-    fetch("/api/book")
-    .then((res) => res.json())
-    .then((data) => {
-      if (data !== undefined) {
-        setStates(data.states);
-      }
+    axios.get("/api/book").then((data) => {
+      console.log("axios get",data)
+        if (data !== undefined) {
+          setStates(data.data.states);
+        }
     });
-  }, [])
+  }, []);
 
   let result2 = null
 

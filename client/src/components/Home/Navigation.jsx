@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../images/logo.png";
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
 import "./nav.css";
 import { useEffect } from "react";
 
@@ -9,14 +10,13 @@ export default function Navigation() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get("/api").then((data) => {
+      console.log("axios get",data)
         if (data !== undefined) {
           setIsLogin(true);
-          setUser(data);
+          setUser(data.data);
         }
-      });
+    });
   }, []);
 
   return (

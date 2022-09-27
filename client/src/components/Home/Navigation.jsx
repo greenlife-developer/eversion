@@ -60,19 +60,19 @@ export default function Navigation() {
                     <p>{user.user.firstName + " " + user.user.lastName}</p>
                     <p>{user.user.email}</p>
                     <li>
-                      <Link className="loggedli" to="/dashboard">Dashboard</Link>
+                      <Link className="loggedli" to="/api/dashboard">Dashboard</Link>
                       <Link className="loggedli" to="/api/logout">Logout</Link>
                     </li>
                   </div>
                 ) : (
                   <div className="not-loggedin">
                     <li>
-                      <NavLink className="nav-links" to="/login">
+                      <NavLink className="nav-links" to="/api/login">
                         Login
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className="nav-links" to="/register">
+                      <NavLink className="nav-links" to="/api/register">
                         Register
                       </NavLink>
                     </li>
@@ -84,12 +84,12 @@ export default function Navigation() {
             <div className="services">
               <h5>Services</h5>
               <li>
-                <NavLink className="nav-links" to="/book">
+                <NavLink className="nav-links" to="/api/book">
                   <i class="fa-regular fa-calendar-check"></i> Book a designer
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-links" to="/upload">
+                <NavLink className="nav-links" to="/api/upload">
                   <i class="fa-solid fa-upload"></i> Upload an image
                 </NavLink>
               </li>

@@ -24,7 +24,7 @@ export default function Book() {
   const [states, setStates] = useState(null);
 
   useEffect(() => {
-    fetch("/book")
+    fetch("/api/book")
     .then((res) => res.json())
     .then((data) => {
       if (data !== undefined) {

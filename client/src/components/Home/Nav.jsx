@@ -34,7 +34,7 @@ export default function Nav() {
               <h4 data-aos="fade-down">No. 1 fashion e-commerce brand</h4>
               <Link
                 data-aos="fade-right"
-                to="/book"
+                to="/api/book"
                 className="btn btn-primary main-action"
               >
                 Book a fashion designer
@@ -42,7 +42,7 @@ export default function Nav() {
               &nbsp;
               <Link
                 data-aos="fade-left"
-                to="/upload"
+                to="/api/upload"
                 className="btn btn-primary main-action"
               >
                 Upload a picture

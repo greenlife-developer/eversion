@@ -56,7 +56,7 @@ mongoClient.connect(
         }
         database = client.db("eversion");
 
-        router.get("/api", (req, res) => {
+        router.get("/", (req, res) => {
             database
                 .collection("users")
                 .find()
@@ -84,15 +84,6 @@ mongoClient.connect(
                     }
                 });
         });
-
-        router.get("/images/:key", (req, res) => {
-            const key = req.params.key
-
-            const readStream = getFileStream(key)
-
-            res.attachment(key);
-            readStream.pipe(res)
-        })
 
         router.get("/register", (req, res) => {
             res.json({
@@ -171,7 +162,7 @@ mongoClient.connect(
             );
         });
 
-        router.get("/api/logout", (req, res) => {
+        router.get("/logout", (req, res) => {
             req.session.destroy();
             res.redirect("/");
         });

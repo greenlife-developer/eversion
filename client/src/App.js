@@ -13,11 +13,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Nav />} />
-          <Route path="/register" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/book" element={<Book />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/api/register" element={<Signup />} />
+          <Route path="/api/login" element={<Login />} />
+          <Route path="/api/upload" element={<Upload />} />
+          <Route path="/api/book" element={<Book />} />
+          <Route path="/api/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
     </div>

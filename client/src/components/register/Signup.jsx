@@ -14,7 +14,7 @@ export default function Signup() {
   };
 
   useEffect(() => {
-    fetch("/register")
+    fetch("/api/register")
       .then((res) => res.json())
       .then((data) => {
         if (data !== undefined) {
@@ -60,10 +60,10 @@ export default function Signup() {
             <div className="sign-up">
               <h2>Let's Sign you up</h2>
               <h6>
-                Already created an account? <Link to="/login">Login</Link>
+                Already created an account? <Link to="/api/login">Login</Link>
               </h6>
             </div>
-            <form action="/register" method="post">
+            <form action="/api/register" method="post">
               <div className="form">
                 <div className="form-name">
                   <div>

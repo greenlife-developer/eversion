@@ -9,7 +9,7 @@ export default function UploadedItems() {
   const handleCancel = () => setPreviewVisible(false);
 
   useEffect(() => {
-    fetch("/book")
+    fetch("/api/book")
       .then((res) => res.json())
       .then((data) => {
         if (data !== undefined) {

@@ -35,15 +35,7 @@ app.use(
     })
 );
 
-app.get("/images/:key", (req, res) => {
-  const key = req.params.key
-
-  const readStream = getFileStream(key) 
-
-  res.attachment(key);
-  readStream.pipe(res)
-})
-
+app.use("/", require("./routes/image"));
 app.use('/api', require("./routes/route"));
 // --------------------------deployment------------------------------
 // const __dirname = path.resolve();
@@ -51,7 +43,7 @@ app.use('/api', require("./routes/route"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
-  app.get('*', function (req, res) {
+  app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 } else {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../images/logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./nav.css";
 import { useEffect } from "react";
@@ -28,6 +28,7 @@ export default function Navigation() {
       </div>
       <div className="btn-group">
         <div
+        class="btn btn-primary" href="#offcanvasExample" role="button" 
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight"
@@ -67,14 +68,14 @@ export default function Navigation() {
                 ) : (
                   <div className="not-loggedin">
                     <li>
-                      <NavLink className="nav-links" to="/api/login">
+                      <Link className="nav-links" to="/api/login">
                         Login
-                      </NavLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavLink className="nav-links" to="/api/register">
+                      <Link className="nav-links" to="/api/register">
                         Register
-                      </NavLink>
+                      </Link>
                     </li>
                   </div>
                 )}
@@ -84,14 +85,14 @@ export default function Navigation() {
             <div className="services">
               <h5>Services</h5>
               <li>
-                <NavLink className="nav-links" to="/api/book">
+                <Link className="nav-links" to="/api/book">
                   <i class="fa-regular fa-calendar-check"></i> Book a designer
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink className="nav-links" to="/api/upload">
+                <Link className="nav-links" to="/api/upload">
                   <i class="fa-solid fa-upload"></i> Upload an image
-                </NavLink>
+                </Link>
               </li>
             </div>
           </div>

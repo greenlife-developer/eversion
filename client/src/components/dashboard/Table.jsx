@@ -57,7 +57,7 @@ const BookedItems = () => {
 
   useEffect(() => {
     axios.get("/api/book").then((data) => {
-      console.log("axios get",data)
+      // console.log("axios get",data)
         if (data !== undefined) {
           setBooked(data.data.booked);
         }
@@ -66,7 +66,7 @@ const BookedItems = () => {
 
   const data = [];
 
-  console.log("This is the ahboard", booked);
+  // console.log("This is the ahboard", booked);
 
   if (booked) {
     booked.map((book, index) => {

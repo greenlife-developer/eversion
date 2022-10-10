@@ -8,23 +8,23 @@ import UploadedItems from "./UploadedItems";
 const { TabPane } = Tabs;
 
 const Layout = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  const handleResize = () => {
-    if (window.innerWidth <= 425) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }
+  // const handleResize = () => {
+  //   if (window.innerWidth <= 425) {
+  //     setIsMobile(true);
+  //   } else {
+  //     setIsMobile(false);
+  //   }
+  // }
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  // });
 
   return (
     <div className="container-fluid dashboard">
-      <Tabs tabPosition={isMobile ? "top" : "left"}>
+      <Tabs tabPosition={window.innerWidth <= 425 ? "top" : "left"}>
         <TabPane tab="Uploads" key="1">
           <UploadedItems />
         </TabPane>

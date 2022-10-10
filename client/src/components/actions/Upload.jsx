@@ -17,7 +17,7 @@ export default function Upload() {
 
   useEffect(() => {
     axios.get("/api").then((data) => {
-      console.log("axios get",data)
+      // console.log("axios get",data)
         if (data !== undefined) {
           setIsLogin(true);
           setUser(data.data);

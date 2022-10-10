@@ -40,7 +40,7 @@ app.use('/api', require("./routes/route"));
 // --------------------------deployment------------------------------
 // const __dirname = path.resolve();
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('/*', function (req, res) {

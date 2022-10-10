@@ -16,7 +16,7 @@ export default function Signup() {
 
   useEffect(() => {
     axios.get("/api/register").then((data) => {
-      console.log("axios get",data)
+      // console.log("axios get",data)
         if (data !== undefined) {
           setStates(data.data.states);
         }

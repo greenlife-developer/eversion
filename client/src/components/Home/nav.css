@@ -12,9 +12,7 @@
 body {
   font-family: "tropiline", sans-serif !important;
   background-color: #F5F4F9;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
+  min-height: 100vh !important;
 }
 
 .myVideo {

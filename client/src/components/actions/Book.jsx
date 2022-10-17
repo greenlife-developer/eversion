@@ -33,6 +33,8 @@ export default function Book() {
     });
   }, []);
 
+  console.log(states)
+
   let result2 = null
 
   if(states && city){

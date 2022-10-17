@@ -11,11 +11,11 @@ export default function Navigation() {
 
   useEffect(() => {
     axios.get("/api").then((data) => {
-      console.log("axios get",data)
-        if (data !== undefined) {
-          setIsLogin(true);
-          setUser(data.data);
-        }
+      console.log("axios get", data);
+      if (data !== undefined) {
+        setIsLogin(true);
+        setUser(data.data);
+      }
     });
   }, []);
 
@@ -28,11 +28,10 @@ export default function Navigation() {
       </div>
       <div className="btn-group">
         <div
-        class="btn btn-primary" href="#offcanvasExample" role="button" 
           data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight"
-          className="dropbtx"
+          data-bs-target="#offcanvasWithBothOptions"
+          aria-controls="offcanvasWithBothOptions"
+          className="dropbtx btn"
         >
           <span></span>
           <span></span>
@@ -40,9 +39,10 @@ export default function Navigation() {
         </div>
         <div
           class="offcanvas offcanvas-end"
+          data-bs-scroll="true"
           tabindex="-1"
-          id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel"
+          id="offcanvasWithBothOptions"
+          aria-labelledby="offcanvasWithBothOptionsLabel"
         >
           <div class="offcanvas-header">
             <button
@@ -61,8 +61,12 @@ export default function Navigation() {
                     <p>{user.user.firstName + " " + user.user.lastName}</p>
                     <p>{user.user.email}</p>
                     <li>
-                      <Link className="loggedli" to="/api/dashboard">Dashboard</Link>
-                      <Link className="loggedli" to="/api/logout">Logout</Link>
+                      <Link className="loggedli" to="/api/dashboard">
+                        Dashboard
+                      </Link>
+                      <Link className="loggedli" to="/api/logout">
+                        Logout
+                      </Link>
                     </li>
                   </div>
                 ) : (
@@ -81,7 +85,7 @@ export default function Navigation() {
                 )}
               </div>
             </div>
-            <hr noshade/>
+            <hr noshade />
             <div className="services">
               <h5>Services</h5>
               <li>
